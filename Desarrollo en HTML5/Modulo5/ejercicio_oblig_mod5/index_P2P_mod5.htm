@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora</title>
+<meta charset="utf-8">
+
+<!-- Incluimos archivos css -->
+<link rel="stylesheet" type="text/css" href="css/p2p_mod5.css">
+<!-- Incluir jQuery -->
+<script src="js/lib/jquery-3.1.1.min.js"></script>
+
+<!-- Incluimos archivos .js -->
+<script src="js/p2p_mod5.js"></script>
+
+</head>
+<body style="text-align: center;">
+  <h1>Buenos días, bienvenido a la calculadora de Ernesto Lázaro Corredera</h1>
+  <input type="text" style="height: 25px; width:290px" id="num" onClick="vaciar()"><p>
+  <button class="buttonMod5Number" value="7">7</button>
+  <button class="buttonMod5Number" value="8">8</button>
+  <button class="buttonMod5Number" value="9">9</button>
+  <button class="buttonMod5Operat" value="+">+</button>
+  <button class="buttonMod5Operat" value="-">-</button>
+  <button class="buttonMod5Operat" value="sqrt">&#8730;(x)</button><p>
+  <button class="buttonMod5Number" value="4">4</button>
+  <button class="buttonMod5Number" value="5">5</button>
+  <button class="buttonMod5Number" value="6">6</button>
+  <button class="buttonMod5Operat" value="*">*</button>
+  <button class="buttonMod5Operat" value="/">/</button>
+  <button class="buttonMod5Operat" value="ent">ent(x)</button><p>
+  <button class="buttonMod5Number" value="1">1</button>
+  <button class="buttonMod5Number" value="2">2</button>
+  <button class="buttonMod5Number" value="3">3</button>
+  <button class="buttonMod5Operat" value="x2">x<sup>2</sup></button>
+  <button class="buttonMod5Operat" value="xY">x<sup>y</sup></button>
+  <button class="buttonMod5Operat" value="1/x">1/x</button><p>
+  <button class="buttonMod5Number" value="0">0</button>
+  <button class="buttonMod5Number" value=".">.</button>
+  <button class="buttonMod5" value="C" onClick="cleanAll()">C</button>  
+  <button class="buttonMod5" style="width: 145px;" id="result">=</button></p>
+</body>
+</html>

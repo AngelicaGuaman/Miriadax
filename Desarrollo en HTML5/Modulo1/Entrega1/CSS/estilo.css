@@ -1,0 +1,16 @@
+body{
+	background-color: grey;
+}
+
+h1{
+	font-size: 50pt;
+	font-family: Arial;
+	color: blue;
+}
+
+p, ul{
+
+	font-size: 25pt;
+	font-family: Helvetica;
+	color: yellow;
+}

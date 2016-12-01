@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geolocalización</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="gmaps.js"></script>
+<script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+<script type="text/javascript" src="touch.js"></script>
+
+<style type="text/css">
+	body{
+		color:blue;
+		text-align:center;
+	}
+	
+	#latlng{
+		display: block;
+		margin:0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		left:0;
+		right:0;
+		height: 50px;
+	}
+	#map {
+		display: block;
+		margin: 0;
+		padding: 0;
+		position: absolute; 
+		top: 120px;     
+		left: 0;        
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,255,0,0.5); 
+	}
+</style>
+
+<script type="text/javascript">
+var map, lat, lng, distancia, iLat, iLng;
+
+
+$(function(){
+	function enlazarMarcador(e){
+		map.drawRoute({
+			origin: [lat, lng],
+			destination: [e.latLng.lat(),e.latLng.lng()],
+			travelMode: 'driving',
+			strokeColor: '#000000',
+			strokeOpacity: 0.6,
+			strokeWeight: 5
+		});
+		lat = e.latLng.lat();
+		lng = e.latLng.lng();
+		map.addMarker({lat: lat, lng: lng});
+	};
+	function geolocalizar(){
+		GMaps.geolocate({
+			success: function(position){
+			lat = position.coords.latitude;
+			lng = position.coords.longitude;
+			
+			iLat = lat;
+			iLng = lng;
+			
+			map = new GMaps({
+				el: '#map',
+				lat: lat,
+				lng: lng,
+				click: enlazarMarcador,
+				tap: enlazarMarcador
+			});
+			map.addMarker({ lat: lat, lng: lng});
+			},
+			error: function(error){alert('Error: '+error.message);},
+			not_supported: function(){alert("No se soporta geolocalización");},
+		});
+	};
+	
+	$("#compactar").on("click", function(){
+		map = new GMaps({
+			el: '#map',
+			lat: iLat,
+			lng: iLng,
+			click: enlazarMarcador,
+			tap: enlazarMarcador
+		});
+		map.addMarker({lat: iLat, lng:iLng});
+		
+		map.drawRoute({
+			origin: [iLat, iLng],
+			destination: [lat,lng],
+			travelMode: 'driving',
+			strokeColor: '#3461c1',
+			strokeOpacity: 0.6,
+			strokeWeight: 5
+		});
+		
+		map.addMarker({lat: lat, lng: lng});
+	});
+	
+	$("#reiniciar").on("click", function(){
+		if(confirm("Está a punto de reiniciar la busqueda de ruta")==true){
+			geolocalizar();
+		}		
+	});
+
+	geolocalizar();
+});
+if (navigator.geolocation) {   
+           navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+        } else {  alert('Geolocation is not supported in this page.'); }
+
+        function successFunction(position) {
+           var lat = position.coords.latitude;
+           var lon = position.coords.longitude;
+           alert('Your latitude is :'+lat+' and longitude is '+lon);
+        }
+
+        function errorFunction(position) {    alert('Error!');   }
+</script>
+</head>
+<body>
+	
+	<h1>Geolocalización - Angélica Guamán<h1>
+	<div class="btn-group btn-group-justified">
+		<div class="btn-group" role="group" aria-label="...">
+			<button id="compactar">Compactar</button>
+			<button id="reiniciar">Reiniciar</button>
+		</div>
+	</div>
+	
+    <div id="map"></div>
+	
+</body>
+</html>

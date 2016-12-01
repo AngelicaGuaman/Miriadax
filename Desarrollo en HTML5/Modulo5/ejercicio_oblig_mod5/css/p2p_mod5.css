@@ -1,0 +1,22 @@
+ .buttonMod5 {
+   height: 45px;
+   width: 45px;
+   text-align: center;
+   box-shadow: -5px -5px 5px #888;
+ }
+  .buttonMod5Number {
+   height: 45px;
+   width: 45px;
+   text-align: center;
+   box-shadow: -5px -5px 5px #888;
+ }
+  .buttonMod5Operat {
+   height: 45px;
+   width: 45px;
+   text-align: center;
+   box-shadow: -5px -5px 5px #888;
+ }
+ input {
+   font-weight: bold;
+   box-shadow: -5px -5px 5px #888;
+ }

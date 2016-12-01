@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf­8">
+		<title>Herencia</title>
+	</head>
+	<style type="text/css">
+
+			/* A=0,B=1,C=0,D=2 => 0,1,0,2*/
+			#caja header h1 { color: blue;}
+
+			/* A=0,B=1,C=1,D=1 => 0,1,1,1*/
+			#caja .cabecera h1 { color: red;} 
+
+			/* A=0,B=0,C=0,D=2 => 0,0,0,2*/
+			header h1 {color: pink;}
+
+			/* A=0,B=0,C=0,D=1 => 0,0,0,1*/
+			h1 { color: green; }
+			
+			/* A=0,B=0,C=0,D=1 => 0,0,0,1*/
+			h1 { color: gold; }
+		</style>
+<body>
+	<div id="caja">
+		<header class="cabecera">
+    		<h1>Cabecera: header</h1>
+		</header>
+	</div>
+</body>
+</html>

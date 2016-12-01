@@ -1,0 +1,214 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>Calculadora</title>
+  <meta charset="utf-8">
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script type="text/javascript">
+
+  $(function() {
+    var acc = 0, op = "";
+
+      $("#n1").on("click", 
+        function(){ 
+          $("#n1").val("");
+        }
+      );
+
+      $("#mas").on("click", 
+        function() {
+          acc = $("#n1").val();
+          op = "+";
+        }
+      );
+
+      $("#menos").on("click", 
+        function() {
+          acc = $("#n1").val();
+          op = "-";
+        }
+      );
+
+      $("#multiplicar").on("click", 
+        function() {
+          acc = $("#n1").val();
+          op = "*";
+        }
+      );
+
+      $("#dividir").on("click", 
+        function() {
+          acc = $("#n1").val();
+          op = "/";
+        }
+      );
+
+      $("#elevado").on("click", 
+        function() {
+          acc = $("#n1").val();
+          op = "^";
+        }
+      );
+
+      $("#calcular").on("click", 
+        function() {
+          var num = $("#n1");
+
+          if(op === "+"){ num.val(+acc + +num.val()); }
+          if(op === "-"){ num.val(+acc - +num.val()); }
+          if(op === "*"){ num.val(+acc * +num.val()); }
+          if(op === "/"){ num.val(+acc / +num.val()); }
+          if(op === "^"){ num.val(Math.pow(acc,num.val())); }
+
+        }
+      );
+
+      $("#sumatorio").on("click", 
+        function() {
+
+          var num = $("#n1");
+          var lista = num.val().split(",");
+
+          var i = 0, acc = 0;
+          
+          while ( i < lista.length ) {
+            acc = acc + (+lista[i]);
+            i++;
+          }
+          num.val(acc);
+        }
+      );
+
+      $("#producto").on("click", 
+        function() {
+
+          var num = $("#n1");
+          var lista = num.val().split(",");
+
+          var i = 0, acc = 1;
+          
+          while ( i < lista.length ) {
+            acc = acc * (+lista[i]);
+            i++;
+          }
+          num.val(acc);
+        }
+      );
+
+      $("#cuadrado").on("click", 
+        function() {
+          var num = $("#n1");
+          num.val(num.val() * num.val());
+        }
+      );
+
+      $("#inverso").on("click", 
+        function() {
+          var num = $("#n1");
+          num.val(1/num.val());
+        }
+      );
+
+      $("#raizCuadrada").on("click", 
+        function() {
+          var num = $("#n1");
+          num.val(Math.sqrt(num.val()));
+        }
+      );
+
+      $("#parteEntera").on("click", 
+        function() {
+          var num = $("#n1");
+          if(num.val() > 0) {
+            num.val(Math.floor(num.val()));
+          }else
+          {
+            num.val(Math.ceil(num.val()));
+          }
+        }
+      );
+
+      $("#2n").on("click", 
+        function() {
+          var num = $("#n1");
+          num.val(Math.pow(2,num.val()));
+        }
+      );
+
+      $("#factorial").on("click", 
+        function() {
+          var total = 1, i = 0; 
+          var num = $("#n1");
+          var n = num.val();
+
+          for (i=1; i<=n; i++) {
+            total = total * i; 
+          }
+
+          num.val(total);
+        }
+      );
+
+  });
+
+  </script>
+</head>
+
+<body>
+<div class="container">
+  <nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#miMenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="index.html">INICIO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="miMenu">
+      <ul class="nav navbar-nav">
+        <li><a href="ejercicio_puzzle.html">PUZZLE</a></li>
+        <li><a href="calculadora.htm">CALCULADORA</a></li> 
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+  <h1>“Calculadora de Angélica Guamán Albarracín”</h1>
+  Número:
+  <input type="text" id="n1">
+
+  <p>
+    <p>Operaciones unitarias (con un solo operando): </p>
+    <button id="cuadrado"> x<sup>2</sup> </button>
+    <button id="inverso">1/x</button>
+    <button id="raizCuadrada">sqrt(x)</button>
+    <button id="parteEntera">parte_entera(x)</button>
+    <button id="2n"> 2<sup>n</sup> </button>
+    <button id="factorial">n!</button>
+  </p>
+  <p>
+    <p>Operaciones binarias (con dos operandos): ---> Es necesario hacer clic en = para calcular el resultado</p>
+    <button id="mas">+</button>
+    <button id="menos">-</button>
+    <button id="multiplicar">*</button>
+    <button id="dividir">/</button>
+    <button id="elevado">x<sup>y</sup></button>
+    <button id="calcular">=</button>
+  </p>
+  
+  <p>
+    <p>Operaciones con n operandos introducidos en formato CSV: (1,1,1,1,1,1)</p>
+    <button id="sumatorio">Σ x</button>
+    <button id="producto">Producto()</button>
+  </p>
+  <div class="panel-footer">Angélica Guamán Albarracín</div>
+</div>
+</body>
+</html>
+
